@@ -1,6 +1,5 @@
 package me.rabidsalid.bedwars.Teams;
 
-import org.bukkit.Location;
 import org.bukkit.entity.Player;
 
 import java.util.ArrayList;
@@ -46,11 +45,9 @@ public class TeamManager {
         return null;
     }
 
-    public void destroyBed(Location location) {
-        for (Team team : teams) {
-            if (team.hasBed() && location.equals(team.getBed().getLocation())) {
+    public void destroyBed(Team team) {
+        if (team.hasBed()) {
                 team.destroyTeamBed();
-            }
         }
     }
 

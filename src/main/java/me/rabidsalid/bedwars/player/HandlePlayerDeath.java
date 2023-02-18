@@ -20,7 +20,8 @@ public class HandlePlayerDeath implements Listener {
         boolean hasBed = team.hasBed();
         if (hasBed) {
             Location respawn = team.getBed().getLocation();
-            respawn.setX(-4);
+            respawn.setX(respawn.getX()-4);
+            respawn.setY(respawn.getY()+1);
             player.teleport(respawn);
             player.setGameMode(GameMode.SURVIVAL);
         }

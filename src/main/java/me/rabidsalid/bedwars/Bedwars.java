@@ -14,7 +14,7 @@ public final class Bedwars extends JavaPlugin {
         System.out.println("Bedwars plugin started");
         getCommand("team").setExecutor(new TeamGUICommand());
         getCommand("teaminfo").setExecutor(new TeamPrintCommand());
-        getCommand("setbed").setExecutor(new SetBedCommand());
+        getCommand("setbed").setExecutor(new SetBedCommand(this));
         getServer().getPluginManager().registerEvents(new GUIEvents(), this);
         getServer().getPluginManager().registerEvents(new HandlePlayerDeath(), this);
         getServer().getPluginManager().registerEvents(new BedDestruction(), this);

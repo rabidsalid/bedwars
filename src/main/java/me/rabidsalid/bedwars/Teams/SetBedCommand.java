@@ -8,17 +8,24 @@ import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
+import org.bukkit.metadata.FixedMetadataValue;
 
 public class SetBedCommand implements CommandExecutor {
+    private final Bedwars plugin;
+    public SetBedCommand(Bedwars plugin) {
+        this.plugin = plugin;
+    }
     @Override
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
         if (sender instanceof Player) {
             Player player = (Player) sender;
+            // make this the target block instead
             Location location = player.getLocation();
             location.setY(location.getY()-1);
             Block block = location.getBlock();
             if (block.getType().equals(Material.BED_BLOCK)) {
                 Team team = Bedwars.teamManager.getTeam(args[0].toUpperCase());
+                block.setMetadata("team", new FixedMetadataValue(plugin, team));
                 team.setBed(block);
                 player.sendMessage(team.getColor() + " bed has been set");
                 return true;
