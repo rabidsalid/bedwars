@@ -1,0 +1,14 @@
+name: Bedwars
+version: '${project.version}'
+main: me.rabidsalid.bedwars.Bedwars
+authors: [ naveed, shahmeer ]
+description: bedwars plugin for mid year project
+commands:
+  team:
+    description: Open a GUI to choose your team
+    usage: /team
+  teaminfo:
+    description: shows team info
+  setbed:
+      description: set bed of team
+      usage: /setbed <team>
