@@ -2,7 +2,7 @@ package me.rabidsalid.bedwars;
 
 import me.rabidsalid.bedwars.Events.BedDestruction;
 import me.rabidsalid.bedwars.Teams.*;
-import me.rabidsalid.bedwars.player.HandlePlayerDeath;
+import me.rabidsalid.bedwars.Player.HandlePlayerDeath;
 import org.bukkit.plugin.java.JavaPlugin;
 
 public final class Bedwars extends JavaPlugin {

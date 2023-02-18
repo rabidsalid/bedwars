@@ -1,4 +1,4 @@
-package me.rabidsalid.bedwars.player;
+package me.rabidsalid.bedwars.Player;
 
 import me.rabidsalid.bedwars.Bedwars;
 import me.rabidsalid.bedwars.Teams.Team;
