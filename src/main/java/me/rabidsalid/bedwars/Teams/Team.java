@@ -1,6 +1,7 @@
 package me.rabidsalid.bedwars.Teams;
 
 import org.bukkit.Bukkit;
+import org.bukkit.Sound;
 import org.bukkit.block.Block;
 import org.bukkit.entity.Player;
 
@@ -28,6 +29,9 @@ public class Team {
     public void destroyTeamBed() {
         Bukkit.broadcastMessage(color + " bed destroyed");
         hasBed = false;
+        for (Player player : players) {
+            player.playSound(player.getLocation(), Sound.ENDERDRAGON_GROWL, (float) 1.0, (float) 1.0);
+        }
     }
 
     public void addPlayer(Player player) {

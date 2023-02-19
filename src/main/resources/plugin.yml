@@ -12,3 +12,6 @@ commands:
   setbed:
       description: set bed of team
       usage: /setbed <team>
+  shop:
+    description: creates a villager with the designated shop
+    usage: /shop <type>
