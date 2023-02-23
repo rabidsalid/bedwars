@@ -8,7 +8,7 @@ import org.bukkit.event.entity.EntityDamageEvent;
 public class PreventVillagerDamage implements Listener {
     @EventHandler
     public void onVillagerDamage(EntityDamageEvent event) {
-        if (event.getEntity() instanceof Villager) {
+        if (event.getEntity() instanceof Villager && event.getCause() != EntityDamageEvent.DamageCause.VOID) {
             event.setCancelled(true);
         }
     }

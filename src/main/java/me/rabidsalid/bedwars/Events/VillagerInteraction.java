@@ -1,5 +1,7 @@
 package me.rabidsalid.bedwars.Events;
 
+import me.rabidsalid.bedwars.Bedwars;
+import me.rabidsalid.bedwars.Shops.ItemShop;
 import org.bukkit.entity.Entity;
 import org.bukkit.entity.Player;
 import org.bukkit.entity.Villager;
@@ -17,6 +19,11 @@ public class VillagerInteraction implements Listener {
             Player player = event.getPlayer();
 
             String villagerType = villager.getCustomName();
+            event.setCancelled(true);
+            if (villagerType.equals("itemshop")) {
+                ItemShop shop = (ItemShop) Bedwars.shopManager.getShop(villager);
+                player.openInventory(shop.createGUI(player));
+            }
         }
 
 
