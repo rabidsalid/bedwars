@@ -15,3 +15,6 @@ commands:
   shop:
     description: creates a villager with the designated shop
     usage: /shop <type>
+  start:
+    description: starts the game
+    usage: /start
