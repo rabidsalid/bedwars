@@ -1,5 +1,6 @@
-package me.rabidsalid.bedwars.Generators;
+package me.rabidsalid.bedwars.Generators.ElementGenerators;
 
+import me.rabidsalid.bedwars.Generators.Generator;
 import org.bukkit.Location;
 import org.bukkit.Material;
 import org.bukkit.inventory.ItemStack;

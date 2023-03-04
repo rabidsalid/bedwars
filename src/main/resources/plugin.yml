@@ -18,3 +18,9 @@ commands:
   start:
     description: starts the game
     usage: /start
+  end:
+    description: ends the game
+    usage: /end
+  gen:
+    description: create a generator
+    usage: /gen <type> (main, diamond, emerald)

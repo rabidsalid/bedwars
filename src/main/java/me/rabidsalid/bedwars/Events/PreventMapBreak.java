@@ -11,7 +11,7 @@ public class PreventMapBreak implements Listener {
     public void onBlockBreak(BlockBreakEvent event) {
         Block block = event.getBlock();
         if (!block.getType().equals(Material.WOOL) && !block.getType().equals(Material.WOOD) &&
-                !block.getType().equals(Material.ENDER_STONE) && !block.getType().equals(Material.BED_BLOCK)) {
+                !block.getType().equals(Material.ENDER_STONE) && !block.getType().equals(Material.BED_BLOCK) && !event.getPlayer().isOp()) {
             event.setCancelled(true);
         }
     }

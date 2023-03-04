@@ -1,6 +1,10 @@
 package me.rabidsalid.bedwars;
 
 import me.rabidsalid.bedwars.Events.*;
+import me.rabidsalid.bedwars.Gamestates.EndGameCommand;
+import me.rabidsalid.bedwars.Gamestates.GameStateManager;
+import me.rabidsalid.bedwars.Gamestates.StartGameCommand;
+import me.rabidsalid.bedwars.Generators.CreateGeneratorCommand;
 import me.rabidsalid.bedwars.Generators.GeneratorManager;
 import me.rabidsalid.bedwars.Shops.CreateVillagerCommand;
 import me.rabidsalid.bedwars.Shops.ItemShopEventHandler;
@@ -13,6 +17,7 @@ public final class Bedwars extends JavaPlugin {
     public static TeamManager teamManager;
     public static ShopManager shopManager;
     public static GeneratorManager genManager;
+    public static GameStateManager gameStateManager;
 
     @Override
     public void onEnable() {
@@ -22,7 +27,9 @@ public final class Bedwars extends JavaPlugin {
         getCommand("teaminfo").setExecutor(new TeamPrintCommand());
         getCommand("setbed").setExecutor(new SetBedCommand(this));
         getCommand("shop").setExecutor(new CreateVillagerCommand());
-        getCommand("start").setExecutor(new CreateVillagerCommand());
+        getCommand("gen").setExecutor(new CreateGeneratorCommand());
+        getCommand("start").setExecutor(new StartGameCommand(this));
+        getCommand("end").setExecutor(new EndGameCommand());
         getServer().getPluginManager().registerEvents(new GUIEvents(), this);
         getServer().getPluginManager().registerEvents(new HandlePlayerDeath(), this);
         getServer().getPluginManager().registerEvents(new BedDestruction(), this);
@@ -34,6 +41,7 @@ public final class Bedwars extends JavaPlugin {
         teamManager = new TeamManager();
         shopManager = new ShopManager();
         genManager = new GeneratorManager();
+        gameStateManager = new GameStateManager();
     }
 
     @Override
