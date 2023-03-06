@@ -24,7 +24,7 @@ public class EndGameCommand implements CommandExecutor {
             for (int i = 0; i < gens.size(); i++) {
                 Generator gen = gens.get(i);
                 gen.cancel();
-                gens.set(i, gen.createNewGeneratorInstance(gen));
+                gens.set(i, gen.createNewGeneratorInstance());
             }
             World world = Bukkit.getWorld("world");
             Collection<Item> items = world.getEntitiesByClass(Item.class);

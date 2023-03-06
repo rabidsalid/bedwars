@@ -17,14 +17,21 @@ public class SetBedCommand implements CommandExecutor {
     }
     @Override
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
-        if (sender instanceof Player) {
+        if (sender instanceof Player && args.length == 1) {
             Player player = (Player) sender;
             // make this the target block instead
             Location location = player.getLocation();
             location.setY(location.getY()-1);
             Block block = location.getBlock();
             if (block.getType().equals(Material.BED_BLOCK)) {
-                Team team = Bedwars.teamManager.getTeam(args[0].toUpperCase());
+                Team team;
+                try {
+                    team = Bedwars.teamManager.getTeam(args[0].toUpperCase());
+                }
+                catch (Exception e) {
+                    player.sendMessage("Not a valid team!");
+                    return false;
+                }
                 block.setMetadata("team", new FixedMetadataValue(plugin, team));
                 team.setBed(block);
                 player.sendMessage(team.getColor() + " bed has been set");

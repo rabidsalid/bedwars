@@ -1,5 +1,6 @@
 package me.rabidsalid.bedwars;
 
+import me.rabidsalid.bedwars.Configs.Config;
 import me.rabidsalid.bedwars.Events.*;
 import me.rabidsalid.bedwars.Gamestates.EndGameCommand;
 import me.rabidsalid.bedwars.Gamestates.GameStateManager;
@@ -30,8 +31,9 @@ public final class Bedwars extends JavaPlugin {
         getCommand("gen").setExecutor(new CreateGeneratorCommand());
         getCommand("start").setExecutor(new StartGameCommand(this));
         getCommand("end").setExecutor(new EndGameCommand());
+        getCommand("setspawn").setExecutor(new SetSpawnCommand());
         getServer().getPluginManager().registerEvents(new GUIEvents(), this);
-        getServer().getPluginManager().registerEvents(new HandlePlayerDeath(), this);
+        getServer().getPluginManager().registerEvents(new HandlePlayerDeath(this), this);
         getServer().getPluginManager().registerEvents(new BedDestruction(), this);
         getServer().getPluginManager().registerEvents(new PreventMapBreak(), this);
         getServer().getPluginManager().registerEvents(new PreventVillagerDamage(), this);
@@ -42,10 +44,14 @@ public final class Bedwars extends JavaPlugin {
         shopManager = new ShopManager();
         genManager = new GeneratorManager();
         gameStateManager = new GameStateManager();
+        Config.setup();
+        shopManager.loadShops();
+        genManager.loadGenerators();
     }
 
     @Override
     public void onDisable() {
-        // Plugin shutdown logic
+        shopManager.saveShops();
+        genManager.saveGenerators();
     }
 }

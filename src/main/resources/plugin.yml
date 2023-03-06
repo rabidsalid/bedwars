@@ -24,3 +24,6 @@ commands:
   gen:
     description: create a generator
     usage: /gen <type> (main, diamond, emerald)
+  setspawn:
+    description: sets team spawn to current location
+    usage: /setspawn <team>

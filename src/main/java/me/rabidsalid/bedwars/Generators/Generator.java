@@ -38,23 +38,23 @@ public abstract class Generator extends BukkitRunnable {
     public void setLocation(Location location) {
         this.location = location;
     }
-    public Generator createNewGeneratorInstance(Generator gen) {
+    public Generator createNewGeneratorInstance() {
         // fix this later, unimportant, but it runs through the wrong constructors when creating these objects;
         // creates gen above original location
-        Location location = gen.getLocation();
-        if (gen.getItem().getType().equals(Material.IRON_INGOT)) {
+        Location location = getLocation();
+        if (getItem().getType().equals(Material.IRON_INGOT)) {
             location.setY(location.getY() - 0.5);
             return new IronGenerator(location);
         }
-        else if (gen.getItem().getType().equals(Material.GOLD_INGOT)) {
+        else if (getItem().getType().equals(Material.GOLD_INGOT)) {
             location.setY(location.getY() - 0.5);
             return new GoldGenerator(location);
         }
-        else if (gen.getItem().getType().equals(Material.DIAMOND)) {
+        else if (getItem().getType().equals(Material.DIAMOND)) {
             location.setY(location.getY() - 2);
             return new DiamondGenerator(location);
         }
-        else if (gen.getItem().getType().equals(Material.EMERALD)) {
+        else if (getItem().getType().equals(Material.EMERALD)) {
             location.setY(location.getY() - 2);
             return new EmeraldGenerator(location);
         }

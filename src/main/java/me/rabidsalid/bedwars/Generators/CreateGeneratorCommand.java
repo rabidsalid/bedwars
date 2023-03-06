@@ -32,6 +32,7 @@ public class CreateGeneratorCommand implements CommandExecutor {
                     break;
                 default:
                     player.sendMessage(ChatColor.RED + "Not a type of generator. Please use main, diamond, or emerald.");
+                    return false;
             }
             player.sendMessage("Generator created!");
             return true;

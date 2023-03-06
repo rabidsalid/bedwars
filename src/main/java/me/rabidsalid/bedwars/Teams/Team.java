@@ -1,6 +1,7 @@
 package me.rabidsalid.bedwars.Teams;
 
 import org.bukkit.Bukkit;
+import org.bukkit.Location;
 import org.bukkit.Sound;
 import org.bukkit.block.Block;
 import org.bukkit.entity.Player;
@@ -11,6 +12,7 @@ public class Team {
     private final String color;
     private boolean hasBed;
     private Block bed;
+    private Location spawnPoint;
     private final ArrayList<Player> players;
     public Team(String color) {
         this.color = color;
@@ -55,5 +57,13 @@ public class Team {
     public void setBed(Block bed) {
         this.bed = bed;
         hasBed = true;
+    }
+
+    public void setSpawn(Location location) {
+        spawnPoint = location;
+    }
+
+    public Location getSpawn() {
+        return spawnPoint;
     }
 }
