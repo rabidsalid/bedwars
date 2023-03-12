@@ -19,7 +19,7 @@ public class TeamManager {
     private final ArrayList<Team> teams = new ArrayList<>();
 
     public TeamManager() {
-        ArrayList<String> teamNames = new ArrayList<>(Arrays.asList("RED", "BLUE")); // , "GREEN","YELLOW","AQUA", "WHITE", "PINK", "GRAY"
+        ArrayList<String> teamNames = new ArrayList<>(Arrays.asList("RED", "BLUE","GREEN","YELLOW","AQUA", "WHITE", "PINK", "GRAY"));
         for (String team: teamNames) {
             teams.add(new Team(team));
         }

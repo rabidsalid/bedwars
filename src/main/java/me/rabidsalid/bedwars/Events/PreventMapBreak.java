@@ -14,5 +14,8 @@ public class PreventMapBreak implements Listener {
                 !block.getType().equals(Material.ENDER_STONE) && !block.getType().equals(Material.BED_BLOCK) && !event.getPlayer().isOp()) {
             event.setCancelled(true);
         }
+        else {
+            PlayerPlaceBlock.placedBlocks.remove(block.getLocation());
+        }
     }
 }

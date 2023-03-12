@@ -24,7 +24,6 @@ public class HandlePlayerDeath implements Listener {
         boolean hasBed = team.hasBed();
         if (hasBed) {
             Location respawn = team.getSpawn();
-            // implement respawn timer
             new PlayerRespawnTimer(player, respawn).runTaskTimer(plugin, 0, 20L);
         }
         else {

@@ -62,6 +62,9 @@ public class ItemShopEventHandler implements Listener {
                     else if (item.getType().equals(Material.IRON_PICKAXE)) {
                         playerinv.remove(Material.STONE_PICKAXE);
                     }
+                    else if (item.getType().equals(Material.STONE_SWORD)) {
+                        playerinv.remove(Material.WOOD_SWORD);
+                    }
                     else if (item.getType().equals(Material.WOOD_AXE)) {
                         int index = inv.first(Material.WOOD_AXE);
                         ItemStack changeitem = new ItemStack(Material.STONE_AXE);

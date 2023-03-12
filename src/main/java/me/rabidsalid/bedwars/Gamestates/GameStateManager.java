@@ -1,6 +1,7 @@
 package me.rabidsalid.bedwars.Gamestates;
 
 import me.rabidsalid.bedwars.Bedwars;
+import me.rabidsalid.bedwars.Events.PlayerPlaceBlock;
 import me.rabidsalid.bedwars.Generators.Generator;
 import me.rabidsalid.bedwars.Teams.Team;
 import org.bukkit.*;
@@ -117,6 +118,7 @@ public class GameStateManager {
         for (Item item: items) {
             item.remove();
         }
+        clearBlocks();
         aliveTeams.clear();
         alivePlayers.clear();
     }
@@ -130,5 +132,11 @@ public class GameStateManager {
     }
     public void unalivePlayer(Player player) {
         alivePlayers.remove(player);
+    }
+
+    private void clearBlocks() {
+        for (Location location: PlayerPlaceBlock.placedBlocks) {
+            location.getBlock().setType(Material.AIR);
+        }
     }
 }

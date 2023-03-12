@@ -42,6 +42,7 @@ public final class Bedwars extends JavaPlugin {
         getServer().getPluginManager().registerEvents(new VillagerInteraction(), this);
         getServer().getPluginManager().registerEvents(new ItemShopEventHandler(), this);
         getServer().getPluginManager().registerEvents(new PreventDropItem(), this);
+        getServer().getPluginManager().registerEvents(new PlayerPlaceBlock(), this);
         // all managers should've had static methods but too late for that
         teamManager = new TeamManager();
         shopManager = new ShopManager();
