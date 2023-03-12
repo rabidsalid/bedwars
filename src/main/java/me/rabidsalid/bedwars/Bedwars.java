@@ -30,7 +30,7 @@ public final class Bedwars extends JavaPlugin {
         getCommand("setbed").setExecutor(new SetBedCommand(this));
         getCommand("shop").setExecutor(new CreateVillagerCommand());
         getCommand("gen").setExecutor(new CreateGeneratorCommand());
-        getCommand("start").setExecutor(new StartGameCommand(this));
+        getCommand("start").setExecutor(new StartGameCommand());
         getCommand("end").setExecutor(new EndGameCommand());
         getCommand("setspawn").setExecutor(new SetSpawnCommand());
         getCommand("removegen").setExecutor(new RemoveGeneratorCommand());
@@ -46,7 +46,7 @@ public final class Bedwars extends JavaPlugin {
         teamManager = new TeamManager();
         shopManager = new ShopManager();
         genManager = new GeneratorManager();
-        gameStateManager = new GameStateManager();
+        gameStateManager = new GameStateManager(this);
         Config.setup();
         shopManager.loadShops();
         genManager.loadGenerators();

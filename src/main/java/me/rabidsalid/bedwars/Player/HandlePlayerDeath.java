@@ -29,6 +29,8 @@ public class HandlePlayerDeath implements Listener {
         }
         else {
             player.setGameMode(GameMode.SPECTATOR);
+            Bedwars.gameStateManager.unalivePlayer(player);
+            Bedwars.gameStateManager.checkGameState();
         }
     }
 }

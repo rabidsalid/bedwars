@@ -1,5 +1,7 @@
 package me.rabidsalid.bedwars.Teams;
 
+import me.rabidsalid.bedwars.Bedwars;
+import me.rabidsalid.bedwars.Gamestates.Gamestate;
 import org.bukkit.Bukkit;
 import org.bukkit.DyeColor;
 import org.bukkit.Material;
@@ -19,30 +21,35 @@ public class TeamGUICommand implements CommandExecutor {
 
         if (sender instanceof Player) {
             Player player = (Player) sender;
+            if (Bedwars.gameStateManager.getGameState() != Gamestate.RUNNING) {
+                Inventory GUI = Bukkit.createInventory(player, 9, "Team GUI");
 
-            Inventory GUI = Bukkit.createInventory(player, 9, "Team GUI");
+                ItemStack Red = new ItemStack(Material.STAINED_GLASS_PANE, 1, DyeColor.RED.getData());
+                setName(Red, "RED");
+                ItemStack Blue = new ItemStack(Material.STAINED_GLASS_PANE, 1, DyeColor.BLUE.getData());
+                setName(Blue, "BLUE");
+                ItemStack Green = new ItemStack(Material.STAINED_GLASS_PANE, 1, DyeColor.GREEN.getData());
+                setName(Green, "GREEN");
+                ItemStack Yellow = new ItemStack(Material.STAINED_GLASS_PANE, 1, DyeColor.YELLOW.getData());
+                setName(Yellow, "YELLOW");
+                ItemStack Aqua = new ItemStack(Material.STAINED_GLASS_PANE, 1, DyeColor.LIGHT_BLUE.getData());
+                setName(Aqua, "AQUA");
+                ItemStack White = new ItemStack(Material.STAINED_GLASS_PANE, 1, DyeColor.WHITE.getData());
+                setName(White, "WHITE");
+                ItemStack Pink = new ItemStack(Material.STAINED_GLASS_PANE, 1, DyeColor.PINK.getData());
+                setName(Pink, "PINK");
+                ItemStack Gray = new ItemStack(Material.STAINED_GLASS_PANE, 1, DyeColor.GRAY.getData());
+                setName(Gray, "GRAY");
 
-            ItemStack Red = new ItemStack(Material.STAINED_GLASS_PANE, 1, DyeColor.RED.getData());
-            setName(Red, "RED");
-            ItemStack Blue = new ItemStack(Material.STAINED_GLASS_PANE, 1, DyeColor.BLUE.getData());
-            setName(Blue, "BLUE");
-            ItemStack Green = new ItemStack(Material.STAINED_GLASS_PANE, 1, DyeColor.GREEN.getData());
-            setName(Green, "GREEN");
-            ItemStack Yellow = new ItemStack(Material.STAINED_GLASS_PANE, 1, DyeColor.YELLOW.getData());
-            setName(Yellow, "YELLOW");
-            ItemStack Aqua = new ItemStack(Material.STAINED_GLASS_PANE, 1, DyeColor.LIGHT_BLUE.getData());
-            setName(Aqua, "AQUA");
-            ItemStack White = new ItemStack(Material.STAINED_GLASS_PANE, 1, DyeColor.WHITE.getData());
-            setName(White, "WHITE");
-            ItemStack Pink = new ItemStack(Material.STAINED_GLASS_PANE, 1, DyeColor.PINK.getData());
-            setName(Pink, "PINK");
-            ItemStack Gray = new ItemStack(Material.STAINED_GLASS_PANE, 1, DyeColor.GRAY.getData());
-            setName(Gray, "GRAY");
+                ItemStack[] items = {Red, Blue, Green, Yellow, Aqua, White, Pink, Gray};
+                GUI.setContents(items);
 
-            ItemStack[] items = {Red, Blue, Green, Yellow, Aqua, White, Pink, Gray};
-            GUI.setContents(items);
+                player.openInventory(GUI);
 
-            player.openInventory(GUI);
+            }
+            else {
+               player.sendMessage("Cannot switch teams while game is running!");
+            }
             return true;
         }
         return false;

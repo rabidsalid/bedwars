@@ -1,5 +1,6 @@
 package me.rabidsalid.bedwars.Player;
 
+import org.bukkit.ChatColor;
 import org.bukkit.GameMode;
 import org.bukkit.Location;
 import org.bukkit.Material;
@@ -29,7 +30,7 @@ public class PlayerRespawnTimer extends BukkitRunnable {
             this.cancel();
         }
         else {
-            player.sendTitle(Integer.toString(timer), "");
+            player.sendTitle(ChatColor.GOLD + Integer.toString(timer), "");
         }
         timer--;
     }

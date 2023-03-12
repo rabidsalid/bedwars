@@ -27,6 +27,7 @@ public class BedDestruction implements Listener {
             Bedwars.teamManager.destroyBed((Team) data.value());
             Player player = event.getPlayer();
             player.playSound(player.getLocation(), Sound.ENDERDRAGON_GROWL, (float) 1.0, (float) 1.0);
+            event.getBlock().getDrops().clear();
         }
 
     }

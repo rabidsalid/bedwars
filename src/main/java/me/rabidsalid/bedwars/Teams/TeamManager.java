@@ -58,7 +58,12 @@ public class TeamManager {
     public void destroyBed(Team team) {
         if (team.hasBed()) {
                 team.destroyTeamBed();
+                Bedwars.gameStateManager.unaliveTeam(team);
         }
+    }
+
+    public ArrayList<Team> getTeams() {
+        return teams;
     }
     // theres better ways to do loading and saving for this, but try catch is enough for now.
     public void saveTeams() {
