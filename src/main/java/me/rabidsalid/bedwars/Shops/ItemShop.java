@@ -34,7 +34,7 @@ public class ItemShop extends Vendor {
             pickaxe = new ItemStack(Material.STONE_PICKAXE);
             setCost(pickaxe, 10, "iron");
         }
-        if (playerInv.contains(Material.STONE_PICKAXE)) {
+        if (playerInv.contains(Material.STONE_PICKAXE) || playerInv.contains(Material.IRON_PICKAXE)) {
             pickaxe = new ItemStack(Material.IRON_PICKAXE);
             setCost(pickaxe, 3, "gold");
         }
@@ -44,7 +44,7 @@ public class ItemShop extends Vendor {
             axe = new ItemStack(Material.STONE_AXE);
             setCost(axe, 10, "iron");
         }
-        if (playerInv.contains(Material.STONE_AXE)) {
+        if (playerInv.contains(Material.STONE_AXE) || playerInv.contains(Material.IRON_AXE)) {
             axe = new ItemStack(Material.IRON_AXE);
             setCost(axe, 3, "gold");
         }

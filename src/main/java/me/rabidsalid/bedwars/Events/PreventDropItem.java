@@ -8,7 +8,9 @@ import org.bukkit.event.player.PlayerDropItemEvent;
 public class PreventDropItem implements Listener {
     @EventHandler
     public void onDropItemEvent(PlayerDropItemEvent event) {
-        if (!event.getItemDrop().getItemStack().getType().equals(Material.WOOL)) {
+        Material material = event.getItemDrop().getItemStack().getType();
+        if (!material.equals(Material.WOOL) && !material.equals(Material.DIAMOND) && !material.equals(Material.EMERALD)
+                && !material.equals(Material.IRON_INGOT) && !material.equals(Material.GOLD_INGOT)) {
             event.setCancelled(true);
         }
     }
