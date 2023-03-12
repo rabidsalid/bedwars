@@ -4,14 +4,12 @@ import me.rabidsalid.bedwars.Bedwars;
 import me.rabidsalid.bedwars.Teams.Team;
 import org.bukkit.GameMode;
 import org.bukkit.Location;
-import org.bukkit.Material;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.entity.PlayerDeathEvent;
-import org.bukkit.inventory.ItemStack;
 public class HandlePlayerDeath implements Listener {
-    private Bedwars plugin;
+    private final Bedwars plugin;
 
     public HandlePlayerDeath(Bedwars plugin) {
         this.plugin = plugin;
@@ -27,10 +25,7 @@ public class HandlePlayerDeath implements Listener {
         if (hasBed) {
             Location respawn = team.getSpawn();
             // implement respawn timer
-            int respawnTimer = 5;
-            player.teleport(respawn);
-            player.setGameMode(GameMode.SURVIVAL);
-            player.getInventory().addItem(new ItemStack(Material.WOOD_SWORD));
+            new PlayerRespawnTimer(player, respawn).runTaskTimer(plugin, 0, 20L);
         }
         else {
             player.setGameMode(GameMode.SPECTATOR);

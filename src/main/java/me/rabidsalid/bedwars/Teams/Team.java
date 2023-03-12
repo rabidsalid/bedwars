@@ -4,7 +4,9 @@ import org.bukkit.Bukkit;
 import org.bukkit.Location;
 import org.bukkit.Sound;
 import org.bukkit.block.Block;
+import org.bukkit.block.BlockFace;
 import org.bukkit.entity.Player;
+import org.bukkit.material.Bed;
 
 import java.util.ArrayList;
 
@@ -13,6 +15,7 @@ public class Team {
     private boolean hasBed;
     private Block bed;
     private Location spawnPoint;
+    private BlockFace bedDirection;
     private final ArrayList<Player> players;
     public Team(String color) {
         this.color = color;
@@ -56,6 +59,13 @@ public class Team {
 
     public void setBed(Block bed) {
         this.bed = bed;
+        Bed castedBed = (Bed) bed.getState().getData();
+        bedDirection = castedBed.getFacing();
+        hasBed = true;
+    }
+
+    public void setBed(Location loc) {
+        this.bed = loc.getBlock();
         hasBed = true;
     }
 
@@ -65,5 +75,11 @@ public class Team {
 
     public Location getSpawn() {
         return spawnPoint;
+    }
+    public BlockFace getBedDirection() {
+        return bedDirection;
+    }
+    public void setBedDirection(BlockFace face) {
+        bedDirection = face;
     }
 }

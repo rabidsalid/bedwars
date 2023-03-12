@@ -3,8 +3,10 @@ package me.rabidsalid.bedwars.Events;
 import me.rabidsalid.bedwars.Bedwars;
 import me.rabidsalid.bedwars.Teams.Team;
 import org.bukkit.Material;
+import org.bukkit.Sound;
 import org.bukkit.block.Block;
 import org.bukkit.block.BlockFace;
+import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.block.BlockBreakEvent;
@@ -23,7 +25,8 @@ public class BedDestruction implements Listener {
             }
             MetadataValue data = block.getMetadata("team").get(0);
             Bedwars.teamManager.destroyBed((Team) data.value());
-
+            Player player = event.getPlayer();
+            player.playSound(player.getLocation(), Sound.ENDERDRAGON_GROWL, (float) 1.0, (float) 1.0);
         }
 
     }

@@ -7,6 +7,7 @@ import me.rabidsalid.bedwars.Gamestates.GameStateManager;
 import me.rabidsalid.bedwars.Gamestates.StartGameCommand;
 import me.rabidsalid.bedwars.Generators.CreateGeneratorCommand;
 import me.rabidsalid.bedwars.Generators.GeneratorManager;
+import me.rabidsalid.bedwars.Generators.RemoveGeneratorCommand;
 import me.rabidsalid.bedwars.Shops.CreateVillagerCommand;
 import me.rabidsalid.bedwars.Shops.ItemShopEventHandler;
 import me.rabidsalid.bedwars.Shops.ShopManager;
@@ -32,6 +33,7 @@ public final class Bedwars extends JavaPlugin {
         getCommand("start").setExecutor(new StartGameCommand(this));
         getCommand("end").setExecutor(new EndGameCommand());
         getCommand("setspawn").setExecutor(new SetSpawnCommand());
+        getCommand("removegen").setExecutor(new RemoveGeneratorCommand());
         getServer().getPluginManager().registerEvents(new GUIEvents(), this);
         getServer().getPluginManager().registerEvents(new HandlePlayerDeath(this), this);
         getServer().getPluginManager().registerEvents(new BedDestruction(), this);
@@ -40,6 +42,7 @@ public final class Bedwars extends JavaPlugin {
         getServer().getPluginManager().registerEvents(new VillagerInteraction(), this);
         getServer().getPluginManager().registerEvents(new ItemShopEventHandler(), this);
         getServer().getPluginManager().registerEvents(new PreventDropItem(), this);
+        // all managers should've had static methods but too late for that
         teamManager = new TeamManager();
         shopManager = new ShopManager();
         genManager = new GeneratorManager();
@@ -47,11 +50,13 @@ public final class Bedwars extends JavaPlugin {
         Config.setup();
         shopManager.loadShops();
         genManager.loadGenerators();
+        teamManager.loadTeams(this);
     }
 
     @Override
     public void onDisable() {
         shopManager.saveShops();
         genManager.saveGenerators();
+        teamManager.saveTeams();
     }
 }

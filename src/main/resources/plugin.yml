@@ -27,3 +27,6 @@ commands:
   setspawn:
     description: sets team spawn to current location
     usage: /setspawn <team>
+  removegen:
+    description: removes the generator at the players location
+    usage: /removegen

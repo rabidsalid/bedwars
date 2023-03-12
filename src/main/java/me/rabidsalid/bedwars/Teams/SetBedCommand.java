@@ -8,6 +8,7 @@ import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
+import org.bukkit.material.Bed;
 import org.bukkit.metadata.FixedMetadataValue;
 
 public class SetBedCommand implements CommandExecutor {
@@ -31,6 +32,10 @@ public class SetBedCommand implements CommandExecutor {
                 catch (Exception e) {
                     player.sendMessage("Not a valid team!");
                     return false;
+                }
+                Bed bed = (Bed) block.getState().getData();
+                if (!bed.isHeadOfBed()) {
+                    block = block.getRelative(bed.getFacing());
                 }
                 block.setMetadata("team", new FixedMetadataValue(plugin, team));
                 team.setBed(block);

@@ -25,9 +25,21 @@ public class GeneratorManager {
     public void addGenerator(Generator gen) {
         generatorList.add(gen);
     }
-
-    public void removeGenerator(Generator gen) {
-        generatorList.remove(gen);
+    // not a very good way of doing it because diamond and emerald locations are higher than block but it works so we up
+    public boolean removeGenerator(Location location) {
+        int playerX = (int) location.getX();
+        int playerY = (int) location.getY();
+        int playerZ = (int) location.getZ();
+        for (Generator gen: generatorList) {
+            int genX = (int) gen.getLocation().getX();
+            int genY = (int) gen.getLocation().getY();
+            int genZ = (int) gen.getLocation().getZ();
+            if (genX == playerX && genY == playerY && genZ == playerZ) {
+                generatorList.remove(gen);
+                return true;
+            }
+        }
+        return false;
     }
 
     public void saveGenerators() {
